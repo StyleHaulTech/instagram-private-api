@@ -36,7 +36,7 @@ MediaCommentsFeed.prototype.get = function () {
             });
         })
         .catch(function (reason) {
-            if(reason.json.message === 'Media is unavailable')throw new Exceptions.MediaUnavailableError();
+            if(reason.json && reason.json.message === 'Media is unavailable')throw new Exceptions.MediaUnavailableError();
             else throw reason;
         })
 };
