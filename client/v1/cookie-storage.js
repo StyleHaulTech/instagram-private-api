@@ -44,7 +44,7 @@ CookieStorage.prototype.putCookie = function (cookie) {
 CookieStorage.prototype.getCookies = function () {
     var self = this;
     return new Promise(function(resolve, reject) {
-        self.storage.findCookies(CONSTANTS.HOSTNAME, '/', function(err, cookies){
+        self.storage.findCookies('instagram.com', '/', function(err, cookies){
             if (err) return reject(err);
             resolve(cookies || []);
         })
