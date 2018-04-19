@@ -23,7 +23,7 @@ module.exports = CookieStorage;
 CookieStorage.prototype.getCookieValue = function (name) {
     var self = this;
     return new Promise(function(resolve, reject) {
-        self.storage.findCookie(CONSTANTS.HOSTNAME, '/', name, function(err, cookie) {
+        self.storage.findCookie('instagram.com', '/', name, function(err, cookie) {
             if (err) return reject(err);
             if (!_.isObject(cookie)) return reject(new Exceptions.CookieNotValidError(name));
             resolve(cookie);
@@ -44,7 +44,7 @@ CookieStorage.prototype.putCookie = function (cookie) {
 CookieStorage.prototype.getCookies = function () {
     var self = this;
     return new Promise(function(resolve, reject) {
-        self.storage.findCookies('instagram.com', '/', function(err, cookies){
+        self.storage.findCookies(CONSTANTS.HOSTNAME, '/', function(err, cookies){
             if (err) return reject(err);
             resolve(cookies || []);
         })
